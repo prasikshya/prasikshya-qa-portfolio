@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import './styles.css';
 import {
   ArrowRight,
   ArrowUpRight,
@@ -23,8 +22,25 @@ import {
   SearchCheck,
   ShieldCheck,
   Sparkles,
+  FileSpreadsheet,
+  Moon,
+  Sun,
+  TestTube2,
   X,
 } from 'lucide-react';
+import {
+  SiApachejmeter,
+  SiCucumber,
+  SiGithubactions,
+  SiGit,
+  SiGooglechrome,
+  SiJavascript,
+  SiJira,
+  SiPostman,
+  SiSelenium,
+  SiSwagger,
+  SiTypescript,
+} from 'react-icons/si';
 
 const baseUrl = import.meta.env.BASE_URL;
 
@@ -116,6 +132,22 @@ const skills = [
   },
 ];
 
+const toolkit = [
+  { name: 'Playwright', detail: 'Browser automation', icon: TestTube2, color: '#2EAD33', surface: '#EDF8EB' },
+  { name: 'Selenium', detail: 'Web testing', icon: SiSelenium, color: '#43B02A', surface: '#EFF8EB' },
+  { name: 'Cucumber', detail: 'BDD workflows', icon: SiCucumber, color: '#23A55A', surface: '#EAF8EF' },
+  { name: 'Postman', detail: 'API validation', icon: SiPostman, color: '#FF6C37', surface: '#FFF0EA' },
+  { name: 'Swagger', detail: 'API documentation', icon: SiSwagger, color: '#68B82E', surface: '#F1FAE9' },
+  { name: 'JMeter', detail: 'Performance testing', icon: SiApachejmeter, color: '#D22128', surface: '#FFF0F0' },
+  { name: 'Excel', detail: 'Test data & reporting', icon: FileSpreadsheet, color: '#217346', surface: '#EAF6EE' },
+  { name: 'Jira', detail: 'Issue tracking', icon: SiJira, color: '#0052CC', surface: '#EAF2FF' },
+  { name: 'GitHub Actions', detail: 'CI workflows', icon: SiGithubactions, color: '#2088FF', surface: '#EAF4FF' },
+  { name: 'Git', detail: 'Version control', icon: SiGit, color: '#F05032', surface: '#FFF0EC' },
+  { name: 'JavaScript', detail: 'Test scripting', icon: SiJavascript, color: '#C89C00', surface: '#FFF9DC' },
+  { name: 'TypeScript', detail: 'Typed automation', icon: SiTypescript, color: '#3178C6', surface: '#EAF4FF' },
+  { name: 'Chrome DevTools', detail: 'Browser inspection', icon: SiGooglechrome, color: '#4285F4', surface: '#EDF4FF' },
+];
+
 const experience = [
   {
     period: 'Jul 2024 — Feb 2025',
@@ -157,6 +189,16 @@ function StatusChip({ variant = 'success', children }) {
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
+  const [theme, setTheme] = useState(() => window.localStorage.getItem('portfolio-theme') ?? 'dark');
+
+  useEffect(() => {
+    document.documentElement.dataset.theme = theme;
+    window.localStorage.setItem('portfolio-theme', theme);
+    document.querySelector('meta[name="theme-color"]')?.setAttribute(
+      'content',
+      theme === 'dark' ? '#07111d' : '#102a43',
+    );
+  }, [theme]);
 
   useEffect(() => {
     const sections = document.querySelectorAll('main section[id]');
@@ -185,16 +227,6 @@ function App() {
             <span><strong>Prasikshya</strong><small>QA Engineer</small></span>
           </a>
 
-          <button
-            className="menu-toggle"
-            type="button"
-            aria-label={isMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
-            aria-expanded={isMenuOpen}
-            onClick={() => setIsMenuOpen((current) => !current)}
-          >
-            {isMenuOpen ? <X /> : <Menu />}
-          </button>
-
           <div className={`nav-area ${isMenuOpen ? 'nav-area--open' : ''}`}>
             <nav aria-label="Primary navigation">
               <ul className="nav-links">
@@ -215,6 +247,30 @@ function App() {
               <Download size={16} aria-hidden="true" />
               Download CV
             </a>
+          </div>
+
+          <div className="nav-controls">
+            <button
+              className={`theme-toggle theme-toggle--${theme}`}
+              type="button"
+              onClick={() => setTheme((current) => (current === 'dark' ? 'light' : 'dark'))}
+              aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
+              aria-pressed={theme === 'dark'}
+              title={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
+            >
+              <Sun size={15} aria-hidden="true" />
+              <Moon size={15} aria-hidden="true" />
+              <span aria-hidden="true" />
+            </button>
+            <button
+              className="menu-toggle"
+              type="button"
+              aria-label={isMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
+              aria-expanded={isMenuOpen}
+              onClick={() => setIsMenuOpen((current) => !current)}
+            >
+              {isMenuOpen ? <X /> : <Menu />}
+            </button>
           </div>
         </div>
       </header>
@@ -468,6 +524,31 @@ function App() {
                   <h3>{group.title}</h3><div className="skill-tags">{group.items.map((item) => <span key={item}>{item}</span>)}</div>
                 </article>
               ))}
+            </div>
+
+            <div className="toolkit" aria-label="QA and automation tools">
+              <div className="toolkit-heading">
+                <div>
+                  <p>Hands-on tools</p>
+                  <h3>Tools I use to investigate, validate, and automate.</h3>
+                </div>
+                <span>Hover to explore</span>
+              </div>
+              <div className="tool-grid">
+                {toolkit.map((tool) => {
+                  const Icon = tool.icon;
+                  return (
+                    <article
+                      className="tool-card"
+                      key={tool.name}
+                      style={{ '--tool-color': tool.color, '--tool-surface': tool.surface }}
+                    >
+                      <span className="tool-card-icon" aria-hidden="true"><Icon size={25} /></span>
+                      <span className="tool-card-copy"><strong>{tool.name}</strong><small>{tool.detail}</small></span>
+                    </article>
+                  );
+                })}
+              </div>
             </div>
           </div>
         </section>
