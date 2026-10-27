@@ -1,28 +1,19 @@
 import { useEffect, useState } from 'react';
 import {
   ArrowRight,
-  ArrowUpRight,
-  BadgeCheck,
   Bot,
   Braces,
-  Bug,
-  Check,
-  CheckCircle2,
-  ChevronRight,
-  ClipboardCheck,
   Code2,
   Copy,
   ExternalLink,
-  FileCheck2,
+  FileText,
+  FileSpreadsheet,
   Github,
   Linkedin,
   Mail,
   Menu,
   Network,
-  SearchCheck,
-  ShieldCheck,
-  Sparkles,
-  FileSpreadsheet,
+  Search,
   Moon,
   Sun,
   TestTube2,
@@ -31,16 +22,10 @@ import {
 import {
   SiApachejmeter,
   SiCucumber,
-  SiGithubactions,
-  SiGit,
-  SiGooglechrome,
-  SiJenkins,
-  SiJavascript,
+  SiJira,
   SiPostman,
-  SiPython,
   SiSelenium,
   SiSwagger,
-  SiTypescript,
 } from 'react-icons/si';
 
 const baseUrl = import.meta.env.BASE_URL;
@@ -49,28 +34,27 @@ const emailAddress = 'prasikshya.222baral@gmail.com';
 const navigation = [
   { label: 'Home', href: '#home' },
   { label: 'About', href: '#about' },
-  { label: 'QA Expertise', href: '#expertise' },
+  { label: 'Expertise', href: '#expertise' },
   { label: 'Projects', href: '#projects' },
-  { label: 'Automation', href: '#automation' },
+  { label: 'Experience', href: '#experience' },
+  { label: 'Skills', href: '#skills' },
   { label: 'Contact', href: '#contact' },
 ];
 
 const expertise = [
   {
-    icon: SearchCheck,
+    icon: Search,
     title: 'Manual & exploratory testing',
     description:
-      'I validate real user journeys, edge cases, error states, and release-critical behaviour beyond the happy path.',
+      'I test real user journeys, edge cases, error states, and release-critical behaviour beyond the happy path.',
     artifacts: ['Test scenarios', 'Defect reports'],
-    label: 'User journey focused',
   },
   {
-    icon: ClipboardCheck,
+    icon: FileText,
     title: 'Test planning, traceability & reporting',
     description:
-      'I turn requirements into structured test cases and traceability matrices, then document execution through detailed test and test closure reports.',
+      'I turn requirements into test cases and traceability matrices, then document execution through test and closure reports.',
     artifacts: ['Traceability matrices', 'Detailed test reports', 'Test closure reports'],
-    label: 'Evidence teams can use',
   },
   {
     icon: Network,
@@ -78,29 +62,17 @@ const expertise = [
     description:
       'I map user flows with clear diagrams, use decision matrices for complex rules, and validate UI, API, and integration behaviour.',
     artifacts: ['Flow diagrams', 'Decision matrices', 'API evidence'],
-    label: 'Clear paths and rules',
   },
   {
     icon: Bot,
     title: 'Test automation',
     description:
-      'I build maintainable automated checks for repeatable, high-value workflows using modern testing practices.',
+      'I build maintainable automated checks for stable, high-value workflows.',
     artifacts: ['Regression suite', 'Reusable page objects', 'CI-ready checks'],
-    label: 'Repeatable protection',
   },
 ];
 
 const projects = [
-  {
-    type: 'Automation project',
-    title: 'SauceDemo — Playwright Test Automation',
-    description:
-      'An end-to-end Playwright and JavaScript test suite for critical e-commerce journeys on the SauceDemo application.',
-    details: ['17 functional test cases', 'Page Object Model', 'GitHub Actions CI'],
-    tags: ['Playwright', 'JavaScript', 'JSON locators'],
-    href: 'https://github.com/prasikshya/Playwright-Automation-SauceDemo',
-    featured: true,
-  },
   {
     type: 'Mobile QA project',
     title: 'DoNIDCR — Mobile app validation',
@@ -122,19 +94,19 @@ const projects = [
 const skills = [
   {
     title: 'Automation',
-    items: ['Playwright', 'Selenium', 'Cucumber', 'Gherkin', 'TypeScript'],
+    items: ['Playwright', 'Selenium', 'Cucumber', 'JavaScript', 'TypeScript'],
   },
   {
     title: 'Testing',
     items: ['Manual testing', 'API testing', 'Regression testing', 'Performance testing'],
   },
   {
-    title: 'Tools',
-    items: ['Postman', 'Swagger', 'JMeter', 'Git & GitHub', 'Jenkins basics'],
+    title: 'Documentation',
+    items: ['Test cases', 'Traceability', 'Test reports', 'Defect reporting'],
   },
   {
     title: 'Practice',
-    items: ['Test plans & cases', 'Defect analysis', 'BDD', 'JavaScript', 'Python'],
+    items: ['BDD', 'Gherkin', 'Git & GitHub', 'Jira', 'Python'],
   },
 ];
 
@@ -146,14 +118,7 @@ const toolkit = [
   { name: 'Swagger', detail: 'API documentation', icon: SiSwagger, color: '#68B82E', surface: '#F1FAE9' },
   { name: 'JMeter', detail: 'Performance testing', icon: SiApachejmeter, color: '#D22128', surface: '#FFF0F0' },
   { name: 'Excel', detail: 'Test data & reporting', icon: FileSpreadsheet, color: '#217346', surface: '#EAF6EE' },
-  { name: 'GitHub Projects', detail: 'Test tracking', icon: Github, color: '#64748B', surface: '#EFF3F7' },
-  { name: 'GitHub Actions', detail: 'CI workflows', icon: SiGithubactions, color: '#2088FF', surface: '#EAF4FF' },
-  { name: 'Git', detail: 'Version control', icon: SiGit, color: '#F05032', surface: '#FFF0EC' },
-  { name: 'JavaScript', detail: 'Test scripting', icon: SiJavascript, color: '#C89C00', surface: '#FFF9DC' },
-  { name: 'TypeScript', detail: 'Typed automation', icon: SiTypescript, color: '#3178C6', surface: '#EAF4FF' },
-  { name: 'Python', detail: 'QA fundamentals', icon: SiPython, color: '#3776AB', surface: '#EAF4FF' },
-  { name: 'Jenkins', detail: 'CI basics', icon: SiJenkins, color: '#D24939', surface: '#FFF0EC' },
-  { name: 'Chrome DevTools', detail: 'Browser inspection', icon: SiGooglechrome, color: '#4285F4', surface: '#EDF4FF' },
+  { name: 'Jira', detail: 'Work tracking', icon: SiJira, color: '#1868DB', surface: '#EAF2FF' },
 ];
 
 const experience = [
@@ -195,15 +160,6 @@ function SectionHeading({ eyebrow, title, description }) {
       </div>
       {description && <p>{description}</p>}
     </div>
-  );
-}
-
-function StatusChip({ variant = 'success', children }) {
-  return (
-    <span className={`status-chip status-chip--${variant}`}>
-      <span className="status-dot" />
-      {children}
-    </span>
   );
 }
 
@@ -275,8 +231,7 @@ function App() {
       <header className="site-header">
         <div className="container nav-container">
           <a className="brand" href="#home" aria-label="Prasikshya Baral home" onClick={closeMenu}>
-           
-            <span><strong>Prasikshya</strong><small>QA Engineer</small></span>
+            <span><strong>Prasikshya</strong><small>Software QA Engineer</small></span>
           </a>
 
           <div className={`nav-area ${isMenuOpen ? 'nav-area--open' : ''}`}>
@@ -327,14 +282,10 @@ function App() {
         <section className="hero section" id="home">
           <div className="container hero-grid">
             <div className="hero-copy">
-              <span className="eyebrow eyebrow--with-icon">
-                <ShieldCheck size={16} aria-hidden="true" />
-                Software QA Analyst & Automation Engineer
-              </span>
+              <span className="eyebrow">Software QA Engineer</span>
               <h1>Building confidence into <span>every release.</span></h1>
               <p className="hero-lede">
-                I help teams deliver reliable, user-friendly software through thoughtful testing, clear documentation,
-                and maintainable automation.
+                Helping teams find risk early and ship web and mobile products with confidence.
               </p>
               <div className="hero-actions">
                 <a className="button button--primary" href="#projects">
@@ -350,43 +301,27 @@ function App() {
               <div className="visual-glow" aria-hidden="true" />
               <article className="quality-board">
                 <div className="board-top">
-                  <div><span className="board-label">QA workflow</span><h2>Release quality review</h2></div>
-                  <StatusChip>In progress</StatusChip>
+                  <div><span className="board-label">QA process</span><h2>How I review a feature</h2></div>
+                  <span className="board-example">Example</span>
                 </div>
                 <div className="review-summary">
-                  <div className="summary-icon" aria-hidden="true"><FileCheck2 size={21} /></div>
-                  <div><span>Review scope</span><strong>Checkout experience</strong></div>
-                  <span className="review-date">Focused validation</span>
+                  <div className="summary-icon" aria-hidden="true"><FileText size={21} /></div>
+                  <div><span>Example feature</span><strong>Checkout flow</strong></div>
                 </div>
-                <div className="checklist" role="list" aria-label="Illustrative QA review checklist">
+                <div className="checklist" role="list" aria-label="Example feature QA process">
                   <div className="checklist-row" role="listitem">
-                    <span className="check-icon check-icon--success"><Check size={15} /></span><span>Authentication</span><StatusChip>Validated</StatusChip>
+                    <span className="step-number">01</span><span>Understand the requirement</span><span className="workflow-label">Scope</span>
                   </div>
                   <div className="checklist-row" role="listitem">
-                    <span className="check-icon check-icon--success"><Check size={15} /></span><span>Product discovery</span><StatusChip>Validated</StatusChip>
+                    <span className="step-number">02</span><span>Test key user paths</span><span className="workflow-label">Testing</span>
                   </div>
                   <div className="checklist-row" role="listitem">
-                    <span className="check-icon check-icon--warning"><Sparkles size={14} /></span><span>Checkout validation</span><StatusChip variant="warning">In review</StatusChip>
-                  </div>
-                  <div className="checklist-row" role="listitem">
-                    <span className="check-icon check-icon--neutral"><Bug size={14} /></span><span>Error states</span><StatusChip variant="neutral">Tracked</StatusChip>
+                    <span className="step-number">03</span><span>Report findings clearly</span><span className="workflow-label">Results</span>
                   </div>
                 </div>
-                <div className="board-footer">
-                  <div className="reviewer-stack" aria-hidden="true"><span>Q</span><span>A</span><span>✓</span></div>
-                  <span>Illustrative QA workflow</span><ChevronRight size={18} aria-hidden="true" />
-                </div>
+                <p className="board-note">A simple, repeatable process for every feature.</p>
               </article>
             </div>
-          </div>
-        </section>
-
-        <section className="proof-strip" aria-label="Portfolio summary">
-          <div className="container proof-grid">
-            <div><BadgeCheck size={22} aria-hidden="true" /><span>Quality-first thinking</span></div>
-            <div><Braces size={22} aria-hidden="true" /><span>Practical automation</span></div>
-            <div><ClipboardCheck size={22} aria-hidden="true" /><span>Clear test documentation</span></div>
-            <div><ShieldCheck size={22} aria-hidden="true" /><span>User-centred validation</span></div>
           </div>
         </section>
 
@@ -395,7 +330,7 @@ function App() {
             <div className="portrait-wrap">
               <div className="portrait-frame"><img src={`${baseUrl}public/prasikshya-img.jpeg`} alt="Prasikshya Baral" /></div>
               <article className="approach-card">
-                <span className="approach-icon"><CheckCircle2 size={18} /></span>
+                <span className="approach-icon"><Network size={18} /></span>
                 <div><span>QA approach</span><strong>User journey first</strong></div>
               </article>
             </div>
@@ -411,11 +346,6 @@ function App() {
                 matrices, preparing UML and flow diagrams, producing test and closure reports, and documenting defects
                 clearly to support reliable, user-friendly releases.
               </p>
-              <ul className="approach-list">
-                <li><CheckCircle2 size={19} aria-hidden="true" /> Test the journey, not just the feature</li>
-                <li><CheckCircle2 size={19} aria-hidden="true" /> Document findings so teams can act on them</li>
-                <li><CheckCircle2 size={19} aria-hidden="true" /> Automate the checks worth protecting</li>
-              </ul>
             </div>
           </div>
         </section>
@@ -428,7 +358,7 @@ function App() {
               description="From requirements and traceability to clear release evidence, I keep quality work visible and actionable."
             />
             <div className="expertise-grid">
-              {expertise.map(({ icon: Icon, title, description, artifacts, label }) => (
+              {expertise.map(({ icon: Icon, title, description, artifacts }) => (
                 <article className="expertise-card" key={title}>
                   <span className="expertise-icon"><Icon size={24} /></span>
                   <h3>{title}</h3><p>{description}</p>
@@ -438,7 +368,6 @@ function App() {
                       {artifacts.map((artifact) => <li key={artifact}>{artifact}</li>)}
                     </ul>
                   </div>
-                  <span className="expertise-label">{label} <ArrowUpRight size={16} /></span>
                 </article>
               ))}
             </div>
@@ -449,27 +378,20 @@ function App() {
           <div className="container">
             <SectionHeading
               eyebrow="Selected work"
-              title="QA projects with purpose"
-              description="Examples of how I apply test design, automation, and quality thinking to meaningful product flows."
+              title="Product QA work"
+              description="Selected work across mobile and platform testing, focused on core user journeys and API behaviour."
             />
             <div className="projects-grid">
               {projects.map((project) => (
-                <article className={`project-card ${project.featured ? 'project-card--featured' : ''}`} key={project.title}>
+                <article className="project-card" key={project.title}>
                   <div className="project-card-top">
-                    <span>{project.type}</span>{project.featured && <StatusChip>Published project</StatusChip>}
+                    <span>{project.type}</span>
                   </div>
                   <h3>{project.title}</h3><p>{project.description}</p>
                   <ul className="project-details">
-                    {project.details.map((detail) => <li key={detail}><Check size={16} aria-hidden="true" /> {detail}</li>)}
+                    {project.details.map((detail) => <li key={detail}>{detail}</li>)}
                   </ul>
                   <div className="tag-list">{project.tags.map((tag) => <span key={tag}>{tag}</span>)}</div>
-                  {project.href ? (
-                    <a className="text-link" href={project.href} target="_blank" rel="noreferrer">
-                      View project <ArrowUpRight size={17} aria-hidden="true" />
-                    </a>
-                  ) : (
-                    <span className="text-link text-link--muted">Project experience <CheckCircle2 size={17} aria-hidden="true" /></span>
-                  )}
                 </article>
               ))}
             </div>
@@ -479,7 +401,7 @@ function App() {
         <section className="section automation-section" id="automation">
           <div className="container automation-shell">
             <div className="automation-intro">
-              <span className="eyebrow">Automation project</span>
+              <span className="eyebrow">Featured case study</span>
               <h2>Reliable checks for the journeys that matter most.</h2>
               <p>
                 SauceDemo is a functional end-to-end automation suite built to validate core e-commerce workflows with
@@ -498,7 +420,7 @@ function App() {
             <article className="automation-board" aria-label="SauceDemo test coverage overview">
               <div className="automation-board-head">
                 <div><span className="board-label">SauceDemo automation suite</span><h3>Test coverage journey</h3></div>
-                <span className="suite-badge"><CheckCircle2 size={15} /> E2E01</span>
+                <span className="suite-badge"><TestTube2 size={15} /> E2E suite</span>
               </div>
               <div className="journey-flow" aria-label="Login, product selection, cart, checkout, confirmation, logout">
                 {['Login', 'Product selection', 'Cart', 'Checkout', 'Confirmation', 'Logout'].map((step, index) => (
@@ -511,29 +433,13 @@ function App() {
               <div className="automation-layers">
                 <div><span className="layer-icon layer-icon--blue"><Code2 size={18} /></span><div><strong>Page objects</strong><span>Reusable actions</span></div></div>
                 <div><span className="layer-icon layer-icon--purple"><Braces size={18} /></span><div><strong>JSON locators</strong><span>Centralised selectors</span></div></div>
-                <div><span className="layer-icon layer-icon--amber"><FileCheck2 size={18} /></span><div><strong>Test data</strong><span>Negative scenarios</span></div></div>
-                <div><span className="layer-icon layer-icon--green"><BadgeCheck size={18} /></span><div><strong>Test tags</strong><span>Smoke, negative, E2E</span></div></div>
+                <div><span className="layer-icon layer-icon--amber"><FileText size={18} /></span><div><strong>Test data</strong><span>Negative scenarios</span></div></div>
+                <div><span className="layer-icon layer-icon--green"><Bot size={18} /></span><div><strong>Test tags</strong><span>Smoke, negative, E2E</span></div></div>
               </div>
               <a className="automation-source-link" href="https://github.com/prasikshya/Playwright-Automation-SauceDemo" target="_blank" rel="noreferrer">
                 Explore the source <ExternalLink size={16} aria-hidden="true" />
               </a>
             </article>
-          </div>
-        </section>
-
-        <section className="section process-section" id="process">
-          <div className="container">
-            <SectionHeading
-              eyebrow="My approach"
-              title="A clear path to a confident release"
-              description="A lightweight process that keeps testing connected to real user needs."
-            />
-            <ol className="process-grid">
-              <li><span>01</span><h3>Understand</h3><p>Learn the feature, its intent, and the journey a user needs to complete.</p></li>
-              <li><span>02</span><h3>Identify risk</h3><p>Map validations, edge cases, dependencies, and the places a flow can break.</p></li>
-              <li><span>03</span><h3>Validate</h3><p>Test the experience manually and automate stable checks that need to stay protected.</p></li>
-              <li><span>04</span><h3>Improve</h3><p>Share clear evidence, support resolution, and make future releases safer.</p></li>
-            </ol>
           </div>
         </section>
 
@@ -543,8 +449,7 @@ function App() {
               <span className="eyebrow">Experience</span>
               <h2>Hands-on work across manual and automation testing.</h2>
               <p className="experience-lede">
-                Experience spanning manual, API, and automation testing, with a focus on test-case design, defect
-                analysis, and clear collaboration across product teams.
+                A progression from QA intern to Software QA Engineer across product, API, and automation testing.
               </p>
             </div>
             <div className="timeline">
@@ -579,10 +484,10 @@ function App() {
             <div className="toolkit" aria-label="QA and automation tools">
               <div className="toolkit-heading">
                 <div>
-                  <p>Hands-on tools</p>
-                  <h3>Tools I use to investigate, validate, and automate.</h3>
+                  <p>Core tools</p>
+                  <h3>A focused QA toolkit.</h3>
                 </div>
-                <span>Hover to explore</span>
+                <span>8 core tools</span>
               </div>
               <div className="tool-grid">
                 {toolkit.map((tool) => {
@@ -605,10 +510,15 @@ function App() {
 
         <section className="contact-section" id="contact">
           <div className="container contact-card">
-            <div>
-              <span className="eyebrow eyebrow--light">Get in touch</span>
-              <h2>Let’s make the next release more reliable.</h2>
-              <p>Open to conversations about QA, test automation, and quality-focused product teams.</p>
+            <div className="contact-copy">
+              <div className="contact-label">
+                <span className="eyebrow eyebrow--light">Get in touch</span>
+                <span className="contact-availability"><span aria-hidden="true" /> Open to QA conversations</span>
+              </div>
+              <h2>Good products deserve a careful second look.</h2>
+              <p>
+                For new features, release testing, or practical automation, feel free to reach out.
+              </p>
             </div>
             <div className="contact-actions">
               <a className="button button--white" href={`mailto:${emailAddress}`}><Mail size={18} aria-hidden="true" /> Email me</a>
@@ -619,7 +529,7 @@ function App() {
                 aria-label={isEmailCopied ? 'Email address copied' : 'Copy email address'}
                 aria-live="polite"
               >
-                {isEmailCopied ? <Check size={18} aria-hidden="true" /> : <Copy size={17} aria-hidden="true" />}
+                <Copy size={17} aria-hidden="true" />
                 {isEmailCopied ? 'Copied' : 'Copy email'}
               </button>
               <div className="social-links" aria-label="Social profiles">
