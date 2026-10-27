@@ -11,7 +11,7 @@ import {
   ChevronRight,
   ClipboardCheck,
   Code2,
-  Download,
+  Copy,
   ExternalLink,
   FileCheck2,
   Github,
@@ -34,15 +34,17 @@ import {
   SiGithubactions,
   SiGit,
   SiGooglechrome,
+  SiJenkins,
   SiJavascript,
-  SiJira,
   SiPostman,
+  SiPython,
   SiSelenium,
   SiSwagger,
   SiTypescript,
 } from 'react-icons/si';
 
 const baseUrl = import.meta.env.BASE_URL;
+const emailAddress = 'prasikshya.222baral@gmail.com';
 
 const navigation = [
   { label: 'Home', href: '#home' },
@@ -59,27 +61,31 @@ const expertise = [
     title: 'Manual & exploratory testing',
     description:
       'I validate real user journeys, edge cases, error states, and release-critical behaviour beyond the happy path.',
+    artifacts: ['Test scenarios', 'Defect reports'],
     label: 'User journey focused',
   },
   {
     icon: ClipboardCheck,
-    title: 'Test planning & documentation',
+    title: 'Test planning, traceability & reporting',
     description:
-      'Clear test scenarios, well-structured cases, and actionable defect reports keep quality visible across the team.',
-    label: 'Clear, usable evidence',
+      'I turn requirements into structured test cases and traceability matrices, then document execution through detailed test and test closure reports.',
+    artifacts: ['Traceability matrices', 'Detailed test reports', 'Test closure reports'],
+    label: 'Evidence teams can use',
   },
   {
     icon: Network,
-    title: 'UI & API validation',
+    title: 'Flow, decision & API validation',
     description:
-      'I check interfaces, workflows, requests, responses, validations, and integration behaviour with a product mindset.',
-    label: 'End-to-end confidence',
+      'I map user flows with clear diagrams, use decision matrices for complex rules, and validate UI, API, and integration behaviour.',
+    artifacts: ['Flow diagrams', 'Decision matrices', 'API evidence'],
+    label: 'Clear paths and rules',
   },
   {
     icon: Bot,
     title: 'Test automation',
     description:
       'I build maintainable automated checks for repeatable, high-value workflows using modern testing practices.',
+    artifacts: ['Regression suite', 'Reusable page objects', 'CI-ready checks'],
     label: 'Repeatable protection',
   },
 ];
@@ -96,39 +102,39 @@ const projects = [
     featured: true,
   },
   {
+    type: 'Mobile QA project',
+    title: 'DoNIDCR — Mobile app validation',
+    description:
+      'Manual and API testing for authentication and event-registration journeys on the mobile version of Nepal’s ID and civil registry platform.',
+    details: ['Authentication validation', 'Event-registration flow', 'API & manual testing'],
+    tags: ['Mobile QA', 'API Testing', 'Manual Testing'],
+  },
+  {
     type: 'QA engineering project',
     title: 'ATFM — Airline operations validation',
     description:
-      'Quality assurance work supporting an Air Traffic Flow Management project designed to streamline airline operations in Nepal.',
-    details: ['Manual test design', 'Automation support', 'API validation'],
+      'Testing support for airline management modules in an Air Traffic Flow Management project, including manual validation, Swagger API testing, and defect verification.',
+    details: ['Airline module test cases', 'Swagger API testing', 'Defect verification'],
     tags: ['Playwright', 'Cucumber', 'Swagger'],
-  },
-  {
-    type: 'Remote QA project',
-    title: 'Prepr Labs — Quality delivery support',
-    description:
-      'A remote QA engagement involving automation support, test-case documentation, progress tracking, and reporting.',
-    details: ['Test documentation', 'Automation workflows', 'Team collaboration'],
-    tags: ['Playwright', 'Gherkin', 'GitHub'],
   },
 ];
 
 const skills = [
   {
     title: 'Automation',
-    items: ['Playwright', 'JavaScript', 'TypeScript', 'Cucumber', 'Gherkin'],
+    items: ['Playwright', 'Selenium', 'Cucumber', 'Gherkin', 'TypeScript'],
   },
   {
     title: 'Testing',
-    items: ['Manual testing', 'Regression testing', 'Exploratory testing', 'API testing'],
+    items: ['Manual testing', 'API testing', 'Regression testing', 'Performance testing'],
   },
   {
     title: 'Tools',
-    items: ['GitHub Actions', 'Postman', 'Swagger', 'Git', 'Chrome DevTools'],
+    items: ['Postman', 'Swagger', 'JMeter', 'Git & GitHub', 'Jenkins basics'],
   },
   {
     title: 'Practice',
-    items: ['Page Object Model', 'Test design', 'Defect analysis', 'SDLC', 'BDD'],
+    items: ['Test plans & cases', 'Defect analysis', 'BDD', 'JavaScript', 'Python'],
   },
 ];
 
@@ -140,21 +146,36 @@ const toolkit = [
   { name: 'Swagger', detail: 'API documentation', icon: SiSwagger, color: '#68B82E', surface: '#F1FAE9' },
   { name: 'JMeter', detail: 'Performance testing', icon: SiApachejmeter, color: '#D22128', surface: '#FFF0F0' },
   { name: 'Excel', detail: 'Test data & reporting', icon: FileSpreadsheet, color: '#217346', surface: '#EAF6EE' },
-  { name: 'Jira', detail: 'Issue tracking', icon: SiJira, color: '#0052CC', surface: '#EAF2FF' },
+  { name: 'GitHub Projects', detail: 'Test tracking', icon: Github, color: '#64748B', surface: '#EFF3F7' },
   { name: 'GitHub Actions', detail: 'CI workflows', icon: SiGithubactions, color: '#2088FF', surface: '#EAF4FF' },
   { name: 'Git', detail: 'Version control', icon: SiGit, color: '#F05032', surface: '#FFF0EC' },
   { name: 'JavaScript', detail: 'Test scripting', icon: SiJavascript, color: '#C89C00', surface: '#FFF9DC' },
   { name: 'TypeScript', detail: 'Typed automation', icon: SiTypescript, color: '#3178C6', surface: '#EAF4FF' },
+  { name: 'Python', detail: 'QA fundamentals', icon: SiPython, color: '#3776AB', surface: '#EAF4FF' },
+  { name: 'Jenkins', detail: 'CI basics', icon: SiJenkins, color: '#D24939', surface: '#FFF0EC' },
   { name: 'Chrome DevTools', detail: 'Browser inspection', icon: SiGooglechrome, color: '#4285F4', surface: '#EDF4FF' },
 ];
 
 const experience = [
   {
+    period: 'Mar 2026 — Present',
+    role: 'Software QA Engineer',
+    company: 'Fusionexis',
+    current: true,
+  },
+  {
+    period: 'Jul 2025 — Jan 2026',
+    role: 'Junior QA Engineer & QA Tutor',
+    company: 'Mindrisers Technologies',
+    description:
+      'Performed Swagger API validation and manual testing on real-time projects, identified defects, and delivered QA training in test design, bug lifecycle, API testing, GitHub, Python, and Selenium basics.',
+  },
+  {
     period: 'Jul 2024 — Feb 2025',
     role: 'QA Engineer',
     company: 'Qaito Automation Pvt. Ltd.',
     description:
-      'Developed and executed automated tests, created manual test cases, tracked defects, and applied BDD practices to user-focused software delivery.',
+      'Developed and executed Playwright and TypeScript tests, created manual test cases, tracked progress in GitHub Board, and applied BDD practices to user-focused software delivery.',
   },
   {
     period: 'Jan 2024 — Jun 2024',
@@ -190,6 +211,7 @@ function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
   const [theme, setTheme] = useState(() => window.localStorage.getItem('portfolio-theme') ?? 'dark');
+  const [isEmailCopied, setIsEmailCopied] = useState(false);
 
   useEffect(() => {
     document.documentElement.dataset.theme = theme;
@@ -216,6 +238,36 @@ function App() {
 
   const closeMenu = () => setIsMenuOpen(false);
 
+  const copyEmail = async () => {
+    let copied = false;
+
+    try {
+      if (navigator.clipboard?.writeText) {
+        await navigator.clipboard.writeText(emailAddress);
+        copied = true;
+      }
+    } catch {
+      // Fall back for browsers that do not permit the modern Clipboard API.
+    }
+
+    if (!copied) {
+      const textArea = document.createElement('textarea');
+      textArea.value = emailAddress;
+      textArea.setAttribute('readonly', '');
+      textArea.style.opacity = '0';
+      textArea.style.position = 'fixed';
+      document.body.append(textArea);
+      textArea.select();
+      copied = document.execCommand('copy');
+      textArea.remove();
+    }
+
+    if (copied) {
+      setIsEmailCopied(true);
+      window.setTimeout(() => setIsEmailCopied(false), 1800);
+    }
+  };
+
   return (
     <div className="site-shell">
       <a className="skip-link" href="#main-content">Skip to content</a>
@@ -224,7 +276,7 @@ function App() {
         <div className="container nav-container">
           <a className="brand" href="#home" aria-label="Prasikshya Baral home" onClick={closeMenu}>
             <span className="brand-mark" aria-hidden="true"><Check strokeWidth={3} /></span>
-            <span><strong>Prasikshya</strong><small>QA Engineer</small></span>
+            <span><strong>Prasikshya Baral</strong><small>Software QA Engineer</small></span>
           </a>
 
           <div className={`nav-area ${isMenuOpen ? 'nav-area--open' : ''}`}>
@@ -243,10 +295,6 @@ function App() {
                 ))}
               </ul>
             </nav>
-            <a className="button button--small button--quiet" href={`${baseUrl}QACV.pdf`} download>
-              <Download size={16} aria-hidden="true" />
-              Download CV
-            </a>
           </div>
 
           <div className="nav-controls">
@@ -291,10 +339,6 @@ function App() {
               <div className="hero-actions">
                 <a className="button button--primary" href="#projects">
                   View my work <ArrowRight size={18} aria-hidden="true" />
-                </a>
-                <a className="button button--secondary" href={`${baseUrl}QACV.pdf`} download>
-                  <Download size={18} aria-hidden="true" />
-                  Download CV
                 </a>
               </div>
               <div className="hero-trust" aria-label="Core quality assurance strengths">
@@ -359,12 +403,14 @@ function App() {
               <span className="eyebrow">About me</span>
               <h2>Quality is more than finding bugs.</h2>
               <p>
-                I am a QA Engineer with hands-on experience in manual, automation, and API testing. I enjoy breaking
-                complex flows into meaningful checks that protect the experience users depend on.
+                I am a Software QA Engineer with hands-on experience in manual, automation, and API testing across
+                web and mobile products. I turn complex user journeys into meaningful checks that uncover issues
+                early, minimise business risk, and protect the reliable, user-friendly experience people expect.
               </p>
               <p>
-                My goal is to help teams discover risk early, communicate findings clearly, and make each release feel
-                more dependable than the last.
+                From live-project testing to QA training, I value clear test cases, actionable defect reports, and
+                practical automation. I help teams make confident release decisions while keeping products intuitive,
+                dependable, and easy to use.
               </p>
               <ul className="approach-list">
                 <li><CheckCircle2 size={19} aria-hidden="true" /> Test the journey, not just the feature</li>
@@ -380,13 +426,19 @@ function App() {
             <SectionHeading
               eyebrow="QA expertise"
               title="How I contribute to product quality"
-              description="A practical balance of thoughtful manual testing and repeatable automation."
+              description="From requirements and traceability to clear release evidence, I keep quality work visible and actionable."
             />
             <div className="expertise-grid">
-              {expertise.map(({ icon: Icon, title, description, label }) => (
+              {expertise.map(({ icon: Icon, title, description, artifacts, label }) => (
                 <article className="expertise-card" key={title}>
                   <span className="expertise-icon"><Icon size={24} /></span>
                   <h3>{title}</h3><p>{description}</p>
+                  <div className="expertise-artifacts">
+                    <span>Typical outputs</span>
+                    <ul>
+                      {artifacts.map((artifact) => <li key={artifact}>{artifact}</li>)}
+                    </ul>
+                  </div>
                   <span className="expertise-label">{label} <ArrowUpRight size={16} /></span>
                 </article>
               ))}
@@ -492,19 +544,18 @@ function App() {
               <span className="eyebrow">Experience</span>
               <h2>Hands-on work across manual and automation testing.</h2>
               <p className="experience-lede">
-                I have worked in QA roles that combine detail-oriented validation, automation support, and close
-                collaboration with product and development teams.
+                Experience spanning manual, API, and automation testing, with a focus on test-case design, defect
+                analysis, and clear collaboration across product teams.
               </p>
-              <a className="button button--secondary" href={`${baseUrl}QACV.pdf`} download>
-                <Download size={18} aria-hidden="true" /> View full CV
-              </a>
             </div>
             <div className="timeline">
               {experience.map((item) => (
                 <article className="timeline-item" key={`${item.company}-${item.period}`}>
                   <span className="timeline-dot" aria-hidden="true" />
                   <span className="timeline-period">{item.period}</span>
-                  <h3>{item.role}</h3><h4>{item.company}</h4><p>{item.description}</p>
+                  <h3>{item.role}</h3><h4>{item.company}</h4>
+                  {item.current && <span className="current-role">Current role</span>}
+                  {item.description && <p>{item.description}</p>}
                 </article>
               ))}
             </div>
@@ -561,7 +612,17 @@ function App() {
               <p>Open to conversations about QA, test automation, and quality-focused product teams.</p>
             </div>
             <div className="contact-actions">
-              <a className="button button--white" href="mailto:prasikshya.222baral@gmail.com"><Mail size={18} aria-hidden="true" /> Email me</a>
+              <a className="button button--white" href={`mailto:${emailAddress}`}><Mail size={18} aria-hidden="true" /> Email me</a>
+              <button
+                className={`button button--copy ${isEmailCopied ? 'is-copied' : ''}`}
+                type="button"
+                onClick={copyEmail}
+                aria-label={isEmailCopied ? 'Email address copied' : 'Copy email address'}
+                aria-live="polite"
+              >
+                {isEmailCopied ? <Check size={18} aria-hidden="true" /> : <Copy size={17} aria-hidden="true" />}
+                {isEmailCopied ? 'Copied' : 'Copy email'}
+              </button>
               <div className="social-links" aria-label="Social profiles">
                 <a href="https://www.linkedin.com/in/prasikshya/" target="_blank" rel="noreferrer" aria-label="LinkedIn profile"><Linkedin size={20} aria-hidden="true" /></a>
                 <a href="https://github.com/prasikshya" target="_blank" rel="noreferrer" aria-label="GitHub profile"><Github size={20} aria-hidden="true" /></a>
