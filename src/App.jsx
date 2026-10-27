@@ -275,8 +275,8 @@ function App() {
       <header className="site-header">
         <div className="container nav-container">
           <a className="brand" href="#home" aria-label="Prasikshya Baral home" onClick={closeMenu}>
-            <span className="brand-mark" aria-hidden="true"><Check strokeWidth={3} /></span>
-            <span><strong>Prasikshya Baral</strong><small>Software QA Engineer</small></span>
+           
+            <span><strong>Prasikshya</strong><small>QA Engineer</small></span>
           </a>
 
           <div className={`nav-area ${isMenuOpen ? 'nav-area--open' : ''}`}>
@@ -393,24 +393,23 @@ function App() {
         <section className="section about-section" id="about">
           <div className="container about-grid">
             <div className="portrait-wrap">
-              <div className="portrait-frame"><img src={`${baseUrl}images/prasikshya-baral.jpeg`} alt="Prasikshya Baral" /></div>
+              <div className="portrait-frame"><img src={`${baseUrl}public/prasikshya-img.jpeg`} alt="Prasikshya Baral" /></div>
               <article className="approach-card">
                 <span className="approach-icon"><CheckCircle2 size={18} /></span>
                 <div><span>QA approach</span><strong>User journey first</strong></div>
               </article>
             </div>
             <div className="about-copy">
-              <span className="eyebrow">About me</span>
+              <div className="about-copy-meta">
+                <span className="eyebrow">About me</span>
+                <span className="experience-badge">2+ Years Experience</span>
+              </div>
               <h2>Quality is more than finding bugs.</h2>
               <p>
-                I am a Software QA Engineer with hands-on experience in manual, automation, and API testing across
-                web and mobile products. I turn complex user journeys into meaningful checks that uncover issues
-                early, minimise business risk, and protect the reliable, user-friendly experience people expect.
-              </p>
-              <p>
-                From live-project testing to QA training, I value clear test cases, actionable defect reports, and
-                practical automation. I help teams make confident release decisions while keeping products intuitive,
-                dependable, and easy to use.
+                Software QA Engineer with 2+ years of experience testing web and mobile applications through manual,
+                automation, and API testing. Skilled in creating test scenarios, maintaining requirement traceability
+                matrices, preparing UML and flow diagrams, producing test and closure reports, and documenting defects
+                clearly to support reliable, user-friendly releases.
               </p>
               <ul className="approach-list">
                 <li><CheckCircle2 size={19} aria-hidden="true" /> Test the journey, not just the feature</li>
@@ -635,7 +634,7 @@ function App() {
       <footer className="site-footer">
         <div className="container footer-inner">
           <a className="brand brand--footer" href="#home">
-            <span className="brand-mark" aria-hidden="true"><Check strokeWidth={3} /></span>
+           
             <span><strong>Prasikshya Baral</strong><small>Software QA Engineer</small></span>
           </a>
           <p>Designed around clarity, care, and quality.</p>
