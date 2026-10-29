@@ -355,7 +355,7 @@ function App() {
         <section className="section about-section" id="about">
           <div className="container about-grid">
             <div className="portrait-wrap">
-              <div className="portrait-frame"><img src="/prasikshya-img.jpeg" alt="Prasikshya Baral" /></div>
+              <div className="portrait-frame"><img src="/portfolio.png" alt="Prasikshya Baral" /></div>
               <article className="approach-card">
                 <span className="approach-icon"><Network size={18} /></span>
                 <div><span>QA approach</span><strong>User journey first</strong></div>
