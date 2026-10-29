@@ -51,11 +51,11 @@ function getServerThemeSnapshot() {
 
 const navigation = [
   { label: 'Home', href: '#home' },
+  { label: 'Skills', href: '#skills' },
   { label: 'About', href: '#about' },
   { label: 'Expertise', href: '#expertise' },
   { label: 'Projects', href: '#projects' },
   { label: 'Experience', href: '#experience' },
-  { label: 'Skills', href: '#skills' },
   { label: 'Contact', href: '#contact' },
 ];
 
@@ -101,11 +101,11 @@ const projects = [
   },
   {
     type: 'QA engineering project',
-    title: 'ATFM — Airline operations validation',
+    title: 'ATFM — Airline operations quality assurance',
     description:
-      'Testing support for airline management modules in an Air Traffic Flow Management project, including manual validation, Swagger API testing, and defect verification.',
-    details: ['Airline module test cases', 'Swagger API testing', 'Defect verification'],
-    tags: ['Playwright', 'Cucumber', 'Swagger'],
+      'Supported quality assurance for airline-operations workflows within an Air Traffic Flow Management platform. Produced use-case diagrams and test cases, automated key regression scenarios, validated API behaviour, and reported defects with clear reproduction evidence.',
+    details: ['Use-case diagrams & test cases', 'Automated regression coverage', 'API validation & defect reporting'],
+    tags: ['Use-case diagrams', 'Test case design', 'Automation', 'Defect reporting'],
   },
 ];
 
@@ -258,7 +258,8 @@ function App() {
       <header className="site-header">
         <div className="container nav-container">
           <a className="brand" href="#home" aria-label="Prasikshya Baral home" onClick={closeMenu}>
-            <span><strong>Prasikshya</strong><small>Software QA Engineer</small></span>
+          
+            <span><strong>Prasikshya Baral</strong><small>Software QA Engineer</small></span>
           </a>
 
           <div className={`nav-area ${isMenuOpen ? 'nav-area--open' : ''}`}>
@@ -309,45 +310,85 @@ function App() {
         <section className="hero section" id="home">
           <div className="container hero-grid">
             <div className="hero-copy">
-              <span className="eyebrow">Software QA Engineer</span>
-              <h1>Building confidence into <span>every release.</span></h1>
+              <span className="eyebrow">Hello, I’m Prasikshya Baral</span>
+              <h1>Software QA Engineer for <span>reliable product releases.</span></h1>
               <p className="hero-lede">
-                Helping teams find risk early and ship web and mobile products with confidence.
+                I test web and mobile products through manual, API, and automation testing—helping teams find risk early and make each release more dependable.
               </p>
               <div className="hero-actions">
                 <a className="button button--primary" href="#projects">
                   View my work <ArrowRight size={18} aria-hidden="true" />
                 </a>
+                <a className="button button--secondary" href="#contact">Get in touch</a>
               </div>
               <div className="hero-trust" aria-label="Core quality assurance strengths">
-                <span>Manual testing</span><span>Automation</span><span>API validation</span>
+                <span><Search size={15} aria-hidden="true" /> Manual testing</span>
+                <span><Network size={15} aria-hidden="true" /> API validation</span>
+                <span><Bot size={15} aria-hidden="true" /> Automation checks</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="section skills-section" id="skills">
+          <div className="container">
+            <SectionHeading
+              eyebrow="Tools & skills"
+              title="A practical QA toolkit, used with purpose."
+              description="I use the right level of testing and documentation for the risk—not tools for the sake of tools."
+            />
+
+            <div className="skills-showcase">
+              <article className="skills-statement">
+                <span className="skills-statement-label">How I work</span>
+                <h3>Quality work that stays clear for the whole team.</h3>
+                <p>
+                  From test scenarios to release evidence, I combine exploratory thinking with repeatable automation where it adds real value.
+                </p>
+                <div className="skills-principles" aria-label="QA principles">
+                  <span>Understand the risk</span>
+                  <span>Test meaningful paths</span>
+                  <span>Communicate clearly</span>
+                </div>
+              </article>
+
+              <div className="skills-groups">
+                {skills.map((group, index) => (
+                  <article className="skill-row" key={group.title}>
+                    <span className="skill-row-index">0{index + 1}</span>
+                    <div>
+                      <h3>{group.title}</h3>
+                      <div className="skill-tags">
+                        {group.items.map((item) => <span key={item}>{item}</span>)}
+                      </div>
+                    </div>
+                  </article>
+                ))}
               </div>
             </div>
 
-            <div className="hero-visual" aria-label="Illustrative quality assurance workspace">
-              <div className="visual-glow" aria-hidden="true" />
-              <article className="quality-board">
-                <div className="board-top">
-                  <div><span className="board-label">QA process</span><h2>How I review a feature</h2></div>
-                  <span className="board-example">Example</span>
+            <div className="toolkit" aria-label="QA and automation tools">
+              <div className="toolkit-heading">
+                <div>
+                  <p>Core tools</p>
+                  <h3>Tools I use across testing and delivery.</h3>
                 </div>
-                <div className="review-summary">
-                  <div className="summary-icon" aria-hidden="true"><FileText size={21} /></div>
-                  <div><span>Example feature</span><strong>Checkout flow</strong></div>
-                </div>
-                <div className="checklist" role="list" aria-label="Example feature QA process">
-                  <div className="checklist-row" role="listitem">
-                    <span className="step-number">01</span><span>Understand the requirement</span><span className="workflow-label">Scope</span>
-                  </div>
-                  <div className="checklist-row" role="listitem">
-                    <span className="step-number">02</span><span>Test key user paths</span><span className="workflow-label">Testing</span>
-                  </div>
-                  <div className="checklist-row" role="listitem">
-                    <span className="step-number">03</span><span>Report findings clearly</span><span className="workflow-label">Results</span>
-                  </div>
-                </div>
-                <p className="board-note">A simple, repeatable process for every feature.</p>
-              </article>
+                <span className="toolkit-count">8 core tools</span>
+              </div>
+              <ul className="tool-list">
+                {toolkit.map((tool) => {
+                  const Icon = tool.icon;
+                  return (
+                    <li className="tool-item" key={tool.name} style={{ '--tool-color': tool.color, '--tool-surface': tool.surface }}>
+                      <span className="tool-item-icon" aria-hidden="true">
+                        <Icon size={23} />
+                      </span>
+                      <span className="tool-item-copy"><strong>{tool.name}</strong><small>{tool.detail}</small></span>
+                      <span className="tool-item-link" aria-hidden="true"><ExternalLink size={14} /></span>
+                    </li>
+                  );
+                })}
+              </ul>
             </div>
           </div>
         </section>
@@ -356,10 +397,6 @@ function App() {
           <div className="container about-grid">
             <div className="portrait-wrap">
               <div className="portrait-frame"><img src="/portfolio.png" alt="Prasikshya Baral" /></div>
-              <article className="approach-card">
-                <span className="approach-icon"><Network size={18} /></span>
-                <div><span>QA approach</span><strong>User journey first</strong></div>
-              </article>
             </div>
             <div className="about-copy">
               <div className="about-copy-meta">
@@ -493,48 +530,6 @@ function App() {
           </div>
         </section>
 
-        <section className="section skills-section" id="skills">
-          <div className="container">
-            <SectionHeading
-              eyebrow="Tools & skills"
-              title="The quality toolkit I work with"
-              description="A practical set of testing methods and tools that support reliable software delivery."
-            />
-            <div className="skills-grid">
-              {skills.map((group) => (
-                <article className="skill-card" key={group.title}>
-                  <h3>{group.title}</h3><div className="skill-tags">{group.items.map((item) => <span key={item}>{item}</span>)}</div>
-                </article>
-              ))}
-            </div>
-
-            <div className="toolkit" aria-label="QA and automation tools">
-              <div className="toolkit-heading">
-                <div>
-                  <p>Core tools</p>
-                  <h3>A focused QA toolkit.</h3>
-                </div>
-                <span>8 core tools</span>
-              </div>
-              <div className="tool-grid">
-                {toolkit.map((tool) => {
-                  const Icon = tool.icon;
-                  return (
-                    <article
-                      className="tool-card"
-                      key={tool.name}
-                      style={{ '--tool-color': tool.color, '--tool-surface': tool.surface }}
-                    >
-                      <span className="tool-card-icon" aria-hidden="true"><Icon size={25} /></span>
-                      <span className="tool-card-copy"><strong>{tool.name}</strong><small>{tool.detail}</small></span>
-                    </article>
-                  );
-                })}
-              </div>
-            </div>
-          </div>
-        </section>
-
         <section className="contact-section" id="contact">
           <div className="container contact-card">
             <div className="contact-copy">
@@ -569,13 +564,32 @@ function App() {
       </main>
 
       <footer className="site-footer">
-        <div className="container footer-inner">
-          <a className="brand brand--footer" href="#home">
-           
-            <span><strong>Prasikshya Baral</strong><small>Software QA Engineer</small></span>
-          </a>
-          <p>Designed around clarity, care, and quality.</p>
-          <span>© {new Date().getFullYear()} Prasikshya Baral</span>
+        <div className="container footer-main">
+          <div className="footer-intro">
+            <a className="brand brand--footer" href="#home">
+             
+              <span><strong>Prasikshya Baral</strong><small>Software QA Engineer</small></span>
+            </a>
+            <p>Thoughtful QA for dependable digital products.</p>
+          </div>
+          <div className="footer-links">
+            <span>Explore</span>
+            <a href="#skills"><Braces size={14} aria-hidden="true" /> Skills</a>
+            <a href="#projects"><FileText size={14} aria-hidden="true" /> Projects</a>
+            <a href="#experience"><Network size={14} aria-hidden="true" /> Experience</a>
+          </div>
+          <div className="footer-connect">
+            <span>Connect</span>
+            <a className="footer-email" href={`mailto:${emailAddress}`}><Mail size={14} aria-hidden="true" /> {emailAddress}</a>
+            <div className="footer-socials">
+              <a href="https://www.linkedin.com/in/prasikshya/" target="_blank" rel="noreferrer"><Linkedin size={14} aria-hidden="true" /> LinkedIn</a>
+              <a href="https://github.com/prasikshya" target="_blank" rel="noreferrer"><Github size={14} aria-hidden="true" /> GitHub</a>
+            </div>
+          </div>
+        </div>
+        <div className="container footer-bottom">
+          <p>© {new Date().getFullYear()} Prasikshya Baral</p>
+          <span className="footer-signoff"> Built with clarity and care.</span>
         </div>
       </footer>
     </div>
