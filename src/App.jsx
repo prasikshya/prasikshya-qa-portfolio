@@ -52,7 +52,6 @@ function getServerThemeSnapshot() {
 const navigation = [
   { label: 'Home', href: '#home' },
   { label: 'Skills', href: '#skills' },
-  { label: 'About', href: '#about' },
   { label: 'Expertise', href: '#expertise' },
   { label: 'Projects', href: '#projects' },
   { label: 'Experience', href: '#experience' },
@@ -128,6 +127,27 @@ const skills = [
   },
 ];
 
+const skillTagTones = {
+  Playwright: { background: '#E7F8EC', border: '#C8ECD1', color: '#257A43' },
+  Selenium: { background: '#F0F8E9', border: '#D9EBCA', color: '#4C842F' },
+  Cucumber: { background: '#E8F8F0', border: '#C9EBD9', color: '#227852' },
+  JavaScript: { background: '#FFF4D8', border: '#F4E1AA', color: '#9A6100' },
+  TypeScript: { background: '#E8F1FF', border: '#C8DDF9', color: '#2567B8' },
+  'Manual testing': { background: '#EAF4FF', border: '#CFE1F7', color: '#2D6EAD' },
+  'API testing': { background: '#F0ECFF', border: '#DBD0FA', color: '#6C50B0' },
+  'Regression testing': { background: '#ECF8ED', border: '#D0ECD2', color: '#397E4A' },
+  'Performance testing': { background: '#FFF0E8', border: '#F8D6C4', color: '#B75F28' },
+  'Test cases': { background: '#EEF4F8', border: '#D7E1EA', color: '#536F8B' },
+  Traceability: { background: '#EEF1FF', border: '#D8DDF8', color: '#586FB0' },
+  'Test reports': { background: '#F4EFFE', border: '#E2D7F7', color: '#7759AA' },
+  'Defect reporting': { background: '#FFF0F2', border: '#F5D2D9', color: '#B6556D' },
+  BDD: { background: '#EAF8F5', border: '#CBEAE2', color: '#247A6E' },
+  Gherkin: { background: '#ECF8EF', border: '#D0ECD8', color: '#43875A' },
+  'Git & GitHub': { background: '#F0F4F8', border: '#D9E1E8', color: '#53677A' },
+  Jira: { background: '#EAF1FF', border: '#CDDCF9', color: '#316CD1' },
+  Python: { background: '#F3F5DF', border: '#E0E6BE', color: '#6A771C' },
+};
+
 const toolkit = [
   { name: 'Playwright', detail: 'Browser automation', icon: TestTube2, color: '#2EAD33', surface: '#EDF8EB' },
   { name: 'Selenium', detail: 'Web testing', icon: SiSelenium, color: '#43B02A', surface: '#EFF8EB' },
@@ -190,6 +210,7 @@ function App() {
     getServerThemeSnapshot,
   );
   const [isEmailCopied, setIsEmailCopied] = useState(false);
+  const [isHeroProfileFlipped, setIsHeroProfileFlipped] = useState(false);
 
   useEffect(() => {
     document.documentElement.dataset.theme = theme;
@@ -214,6 +235,8 @@ function App() {
   }, []);
 
   const closeMenu = () => setIsMenuOpen(false);
+
+  const toggleHeroProfile = () => setIsHeroProfileFlipped((current) => !current);
 
   const toggleTheme = () => {
     const nextTheme = theme === 'dark' ? 'light' : 'dark';
@@ -258,7 +281,7 @@ function App() {
       <header className="site-header">
         <div className="container nav-container">
           <a className="brand" href="#home" aria-label="Prasikshya Baral home" onClick={closeMenu}>
-          
+        
             <span><strong>Prasikshya Baral</strong><small>Software QA Engineer</small></span>
           </a>
 
@@ -319,13 +342,56 @@ function App() {
                 <a className="button button--primary" href="#projects">
                   View my work <ArrowRight size={18} aria-hidden="true" />
                 </a>
-                <a className="button button--secondary" href="#contact">Get in touch</a>
+                <a className="hero-contact-link" href="#contact">Get in touch <ArrowRight size={16} aria-hidden="true" /></a>
               </div>
               <div className="hero-trust" aria-label="Core quality assurance strengths">
                 <span><Search size={15} aria-hidden="true" /> Manual testing</span>
                 <span><Network size={15} aria-hidden="true" /> API validation</span>
                 <span><Bot size={15} aria-hidden="true" /> Automation checks</span>
               </div>
+            </div>
+
+            <div className="hero-visual">
+              <button
+                className={`hero-flip-card ${isHeroProfileFlipped ? 'is-flipped' : ''}`}
+                type="button"
+                onPointerEnter={(event) => {
+                  if (event.pointerType === 'mouse') setIsHeroProfileFlipped(true);
+                }}
+                onPointerLeave={(event) => {
+                  if (event.pointerType === 'mouse') setIsHeroProfileFlipped(false);
+                }}
+                onFocus={() => setIsHeroProfileFlipped(true)}
+                onBlur={() => setIsHeroProfileFlipped(false)}
+                onTouchStart={toggleHeroProfile}
+                onKeyDown={(event) => {
+                  if (event.key === 'Enter' || event.key === ' ') {
+                    event.preventDefault();
+                    toggleHeroProfile();
+                  }
+                }}
+                aria-pressed={isHeroProfileFlipped}
+                aria-label={isHeroProfileFlipped ? 'Show Prasikshya Baral photo' : 'Show About Prasikshya Baral'}
+              >
+                <span className="hero-flip-card-inner">
+                  <span className="hero-card-face hero-card-face--front" aria-hidden={isHeroProfileFlipped}>
+                    <img src="/portfolio.png" alt="" />
+                    <span className="hero-photo-overlay">
+                      <span className="hero-card-eyebrow">Prasikshya Baral</span>
+                      <strong>Software QA Engineer</strong>
+                      <span className="flip-hint">Touch or hover for About me <ArrowRight size={15} aria-hidden="true" /></span>
+                    </span>
+                  </span>
+                  <span className="hero-card-face hero-card-face--back" aria-hidden={!isHeroProfileFlipped}>
+                    <span className="hero-avatar"><img src="/portfolio.png" alt="" /></span>
+                    <span className="hero-card-eyebrow">About me</span>
+                    <strong>Quality is more than finding bugs.</strong>
+                    <span className="hero-card-copy">2+ years testing web and mobile products through manual, API, and automation testing—with clear cases, evidence, and defect reporting.</span>
+                    <span className="hero-card-tags"><span>Manual</span><span>API</span><span>Automation</span></span>
+              
+                  </span>
+                </span>
+              </button>
             </div>
           </div>
         </section>
@@ -339,27 +405,28 @@ function App() {
             />
 
             <div className="skills-showcase">
-              <article className="skills-statement">
-                <span className="skills-statement-label">How I work</span>
-                <h3>Quality work that stays clear for the whole team.</h3>
-                <p>
-                  From test scenarios to release evidence, I combine exploratory thinking with repeatable automation where it adds real value.
-                </p>
-                <div className="skills-principles" aria-label="QA principles">
-                  <span>Understand the risk</span>
-                  <span>Test meaningful paths</span>
-                  <span>Communicate clearly</span>
-                </div>
-              </article>
-
-              <div className="skills-groups">
+              <div className="skills-matrix" aria-label="QA skills by practice area">
                 {skills.map((group, index) => (
-                  <article className="skill-row" key={group.title}>
+                  <article className={`skill-row ${group.title === 'Testing' ? 'skill-row--featured' : ''}`} key={group.title}>
                     <span className="skill-row-index">0{index + 1}</span>
                     <div>
                       <h3>{group.title}</h3>
                       <div className="skill-tags">
-                        {group.items.map((item) => <span key={item}>{item}</span>)}
+                        {group.items.map((item) => {
+                          const tone = skillTagTones[item];
+                          return (
+                            <span
+                              key={item}
+                              style={tone ? {
+                                '--tag-background': tone.background,
+                                '--tag-border': tone.border,
+                                '--tag-color': tone.color,
+                              } : undefined}
+                            >
+                              {item}
+                            </span>
+                          );
+                        })}
                       </div>
                     </div>
                   </article>
@@ -389,27 +456,6 @@ function App() {
                   );
                 })}
               </ul>
-            </div>
-          </div>
-        </section>
-
-        <section className="section about-section" id="about">
-          <div className="container about-grid">
-            <div className="portrait-wrap">
-              <div className="portrait-frame"><img src="/portfolio.png" alt="Prasikshya Baral" /></div>
-            </div>
-            <div className="about-copy">
-              <div className="about-copy-meta">
-                <span className="eyebrow">About me</span>
-                <span className="experience-badge">2+ Years Experience</span>
-              </div>
-              <h2>Quality is more than finding bugs.</h2>
-              <p>
-                Software QA Engineer with 2+ years of experience testing web and mobile applications through manual,
-                automation, and API testing. Skilled in creating test scenarios, maintaining requirement traceability
-                matrices, preparing UML and flow diagrams, producing test and closure reports, and documenting defects
-                clearly to support reliable, user-friendly releases.
-              </p>
             </div>
           </div>
         </section>
@@ -567,7 +613,7 @@ function App() {
         <div className="container footer-main">
           <div className="footer-intro">
             <a className="brand brand--footer" href="#home">
-             
+           
               <span><strong>Prasikshya Baral</strong><small>Software QA Engineer</small></span>
             </a>
             <p>Thoughtful QA for dependable digital products.</p>
