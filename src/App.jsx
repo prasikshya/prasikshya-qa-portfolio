@@ -1,4 +1,6 @@
-import { useEffect, useState } from 'react';
+'use client';
+
+import { useEffect, useState, useSyncExternalStore } from 'react';
 import {
   ArrowRight,
   Bot,
@@ -28,8 +30,24 @@ import {
   SiSwagger,
 } from 'react-icons/si';
 
-const baseUrl = import.meta.env.BASE_URL;
 const emailAddress = 'prasikshya.222baral@gmail.com';
+
+function subscribeToTheme(callback) {
+  window.addEventListener('storage', callback);
+  window.addEventListener('portfolio-theme-change', callback);
+  return () => {
+    window.removeEventListener('storage', callback);
+    window.removeEventListener('portfolio-theme-change', callback);
+  };
+}
+
+function getThemeSnapshot() {
+  return window.localStorage.getItem('portfolio-theme') === 'light' ? 'light' : 'dark';
+}
+
+function getServerThemeSnapshot() {
+  return 'dark';
+}
 
 const navigation = [
   { label: 'Home', href: '#home' },
@@ -166,12 +184,15 @@ function SectionHeading({ eyebrow, title, description }) {
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
-  const [theme, setTheme] = useState(() => window.localStorage.getItem('portfolio-theme') ?? 'dark');
+  const theme = useSyncExternalStore(
+    subscribeToTheme,
+    getThemeSnapshot,
+    getServerThemeSnapshot,
+  );
   const [isEmailCopied, setIsEmailCopied] = useState(false);
 
   useEffect(() => {
     document.documentElement.dataset.theme = theme;
-    window.localStorage.setItem('portfolio-theme', theme);
     document.querySelector('meta[name="theme-color"]')?.setAttribute(
       'content',
       theme === 'dark' ? '#07111d' : '#102a43',
@@ -193,6 +214,12 @@ function App() {
   }, []);
 
   const closeMenu = () => setIsMenuOpen(false);
+
+  const toggleTheme = () => {
+    const nextTheme = theme === 'dark' ? 'light' : 'dark';
+    window.localStorage.setItem('portfolio-theme', nextTheme);
+    window.dispatchEvent(new Event('portfolio-theme-change'));
+  };
 
   const copyEmail = async () => {
     let copied = false;
@@ -256,7 +283,7 @@ function App() {
             <button
               className={`theme-toggle theme-toggle--${theme}`}
               type="button"
-              onClick={() => setTheme((current) => (current === 'dark' ? 'light' : 'dark'))}
+              onClick={toggleTheme}
               aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
               aria-pressed={theme === 'dark'}
               title={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
@@ -328,7 +355,7 @@ function App() {
         <section className="section about-section" id="about">
           <div className="container about-grid">
             <div className="portrait-wrap">
-              <div className="portrait-frame"><img src={`${baseUrl}public/prasikshya-img.jpeg`} alt="Prasikshya Baral" /></div>
+              <div className="portrait-frame"><img src="/prasikshya-img.jpeg" alt="Prasikshya Baral" /></div>
               <article className="approach-card">
                 <span className="approach-icon"><Network size={18} /></span>
                 <div><span>QA approach</span><strong>User journey first</strong></div>
