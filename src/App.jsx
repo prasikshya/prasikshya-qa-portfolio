@@ -52,9 +52,9 @@ function getServerThemeSnapshot() {
 const navigation = [
   { label: 'Home', href: '#home' },
   { label: 'Skills', href: '#skills' },
-  { label: 'Expertise', href: '#expertise' },
   { label: 'Projects', href: '#projects' },
   { label: 'Experience', href: '#experience' },
+  { label: 'Expertise', href: '#expertise' },
   { label: 'Contact', href: '#contact' },
 ];
 
@@ -334,7 +334,7 @@ function App() {
           <div className="container hero-grid">
             <div className="hero-copy">
               <span className="eyebrow">Hello, I’m Prasikshya Baral</span>
-              <h1>Software QA Engineer for <span>reliable product releases.</span></h1>
+              <h1>Software QA Engineer for <span>reliable releases.</span></h1>
               <p className="hero-lede">
                 I test web and mobile products through manual, API, and automation testing—helping teams find risk early and make each release more dependable.
               </p>
@@ -460,54 +460,6 @@ function App() {
           </div>
         </section>
 
-        <section className="section expertise-section" id="expertise">
-          <div className="container">
-            <SectionHeading
-              eyebrow="QA expertise"
-              title="How I contribute to product quality"
-              description="From requirements and traceability to clear release evidence, I keep quality work visible and actionable."
-            />
-            <div className="expertise-grid">
-              {expertise.map(({ icon: Icon, title, description, artifacts }) => (
-                <article className="expertise-card" key={title}>
-                  <span className="expertise-icon"><Icon size={24} /></span>
-                  <h3>{title}</h3><p>{description}</p>
-                  <div className="expertise-artifacts">
-                    <span>Typical outputs</span>
-                    <ul>
-                      {artifacts.map((artifact) => <li key={artifact}>{artifact}</li>)}
-                    </ul>
-                  </div>
-                </article>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section className="section projects-section" id="projects">
-          <div className="container">
-            <SectionHeading
-              eyebrow="Selected work"
-              title="Product QA work"
-              description="Selected work across mobile and platform testing, focused on core user journeys and API behaviour."
-            />
-            <div className="projects-grid">
-              {projects.map((project) => (
-                <article className="project-card" key={project.title}>
-                  <div className="project-card-top">
-                    <span>{project.type}</span>
-                  </div>
-                  <h3>{project.title}</h3><p>{project.description}</p>
-                  <ul className="project-details">
-                    {project.details.map((detail) => <li key={detail}>{detail}</li>)}
-                  </ul>
-                  <div className="tag-list">{project.tags.map((tag) => <span key={tag}>{tag}</span>)}</div>
-                </article>
-              ))}
-            </div>
-          </div>
-        </section>
-
         <section className="section automation-section" id="automation">
           <div className="container automation-shell">
             <div className="automation-intro">
@@ -553,6 +505,30 @@ function App() {
           </div>
         </section>
 
+        <section className="section projects-section" id="projects">
+          <div className="container">
+            <SectionHeading
+              eyebrow="Selected work"
+              title="Product QA work"
+              description="Selected work across mobile and platform testing, focused on core user journeys and API behaviour."
+            />
+            <div className="projects-grid">
+              {projects.map((project) => (
+                <article className="project-card" key={project.title}>
+                  <div className="project-card-top">
+                    <span>{project.type}</span>
+                  </div>
+                  <h3>{project.title}</h3><p>{project.description}</p>
+                  <ul className="project-details">
+                    {project.details.map((detail) => <li key={detail}>{detail}</li>)}
+                  </ul>
+                  <div className="tag-list">{project.tags.map((tag) => <span key={tag}>{tag}</span>)}</div>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
         <section className="section experience-section" id="experience">
           <div className="container experience-grid">
             <div>
@@ -570,6 +546,30 @@ function App() {
                   <h3>{item.role}</h3><h4>{item.company}</h4>
                   {item.current && <span className="current-role">Current role</span>}
                   {item.description && <p>{item.description}</p>}
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="section expertise-section" id="expertise">
+          <div className="container">
+            <SectionHeading
+              eyebrow="QA expertise"
+              title="How I contribute to product quality"
+              description="From requirements and traceability to clear release evidence, I keep quality work visible and actionable."
+            />
+            <div className="expertise-grid">
+              {expertise.map(({ icon: Icon, title, description, artifacts }) => (
+                <article className="expertise-card" key={title}>
+                  <span className="expertise-icon"><Icon size={24} /></span>
+                  <h3>{title}</h3><p>{description}</p>
+                  <div className="expertise-artifacts">
+                    <span>Typical outputs</span>
+                    <ul>
+                      {artifacts.map((artifact) => <li key={artifact}>{artifact}</li>)}
+                    </ul>
+                  </div>
                 </article>
               ))}
             </div>
